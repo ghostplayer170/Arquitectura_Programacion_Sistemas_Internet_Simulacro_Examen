@@ -6,7 +6,7 @@ import { typeDefs } from "./gql/schema.ts";
 
 const env = await load(); // Carga Variables de entorno
 
-const PORT = env.PORT || Deno.env.get("PORT") || 4001;
+const PORT = env.PORT || Deno.env.get("PORT");
 
 // Verifica variables de entorno.
 if (!PORT) {
@@ -18,8 +18,6 @@ const server = new ApolloServer({
   //resolvers: resolvers,
   typeDefs: typeDefs,
 });
-
-
 
 const { url } = await startStandaloneServer(server,{
   listen: {
